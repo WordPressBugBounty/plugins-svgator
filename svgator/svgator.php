@@ -3,7 +3,7 @@
  * Plugin Name: SVGator
  * Plugin URI: https://www.svgator.com/help/getting-started/how-to-add-svg-to-wordpress
  * Description: Import your animated SVGs from SVGator.com
- * Version: 1.3.2
+ * Version: 1.3.3
  * Author: SVGator
  * Author URI: https://www.svgator.com
  * License: GPL 2
@@ -12,7 +12,7 @@
  */
 
 /*
-	Copyright 2020 Smartware INC.
+	Copyright © 2024 Smartketer LLC
 	This program is free software; you can redistribute it
 	under the terms of the GNU General Public License as published by
 	the Free Software Foundation; either version 2 of the License, or
@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-const WP_SVGATOR_VERSION = '1.3.2';
+const WP_SVGATOR_VERSION = '1.3.3';
 define( 'WP_SVGATOR_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WP_SVGATOR_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 

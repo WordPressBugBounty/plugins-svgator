@@ -60,6 +60,22 @@ class WP_SVGator {
         this.init();
     }
 
+    /**
+     * @description Returns the host to use depending on where it's accessed from and if it has a debug-plugin-backend query parameter set, and sets a cookie with it
+     * @returns {string}
+     * @private
+     */
+    static _getHost() {
+        const debugUrl = new URLSearchParams(document.location.search).get('debug-plugin-backend');
+        if (debugUrl) {
+            document.cookie = `debug-plugin-backend=${debugUrl}; SameSite=None; Secure`;
+            return `${debugUrl}/app-auth`;
+        }
+        return ['wp.local', 'localhost', 'wp.local:8081'].includes(location.hostname) || location.hostname.includes('.svgator.net')
+            ? 'https://app.svgator.net/app-auth'
+            : 'https://app.svgator.com/app-auth';
+    }
+
     init() {
         let slf = this;
         this._logoutNonce = slf.$('#svgator-header input[name="svgator_logOut_nonce"]').val();
@@ -212,10 +228,7 @@ class WP_SVGator {
     updateAuthToken() {
         let slf = this;
         return new Promise(function(resolve, reject) {
-
-            const host = ['wp.local', 'localhost'].includes(location.hostname) || location.hostname.includes('.svgator.net')
-                ? 'https://app.svgator.net/app-auth'
-                : 'https://app.svgator.com/app-auth';
+            const host = slf.constructor._getHost();
 
             let endpoint = window.svgator_options
                 && window.svgator_options.endpoint

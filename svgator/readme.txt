@@ -1,12 +1,12 @@
 === SVGator - Add Animated SVG Easily ===
 
-Contributors: alucaci, dzsamper, lzudor, lgorbe
+Contributors: alucaci, dzsamper, lzudor, lgorbe, cursan
 Donate link: http://www.svgator.com/
 Tags: svg, vector image
 Requires at least: 5.0
 Requires PHP: 5.2
-Tested up to: 6.6
-Stable tag: 1.3.2
+Tested up to: 6.7
+Stable tag: 1.3.3
 License: GPLv2
 
 The easiest way to add SVG animations to your website right from your SVGator account.
@@ -90,6 +90,9 @@ You can report any security bugs found in the source code of this plugin through
 
 == Changelog ==
 
+= 1.3.3 =
+* Feature - Enhanced Debugging Mode for Development
+
 = 1.3.2 =
 * Bugfix - Issue introduced in 1.3.1 fixed: Cannot select SVG for SVGator Legacy Widget
 
@@ -157,7 +160,7 @@ You can report any security bugs found in the source code of this plugin through
 
 == Upgrade Notice ==
 
-For full functionality update to version 1.3.2
+For full functionality update to version 1.3.3
 
 == Disclosure ==
 

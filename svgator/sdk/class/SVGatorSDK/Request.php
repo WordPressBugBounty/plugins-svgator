@@ -32,7 +32,8 @@ class Request {
 
 	private function __construct() {
 		if ( in_array( @$_SERVER['HTTP_HOST'], [ 'wp.local', 'localhost:8081', 'wp.local:8081' ], true ) ) {
-			$this->endpoint = 'https://app.svgator.net/api/app-auth/';
+            $domain = $_COOKIE['debug-plugin-backend'] ?? 'https://app.svgator.net';
+            $this->endpoint = $domain . '/api/app-auth/';
 		} elseif ( str_contains( @$_SERVER['HTTP_HOST'], '.svgator.net' ) ) {
 			/*
 			 * this is because dev cannot access dev
