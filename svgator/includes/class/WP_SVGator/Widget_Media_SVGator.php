@@ -34,7 +34,7 @@ class Widget_Media_SVGator extends WP_Widget {
 			'media_svgator',
 			'SVGator',
 			array(
-				'description' => __( 'Displays an animated SVG.' ),
+				'description' => __( 'Displays an animated SVG.', 'svgator' ),
 				'mime_type'   => 'svgator',
 			)
 		);

@@ -15,7 +15,7 @@ class ExportException extends Exception
 
     // custom string representation of object
     public function __toString() {
-        return parent::__toString() . var_export($this->data, true);
+        return parent::__toString() . wp_json_encode($this->data);
     }
 
     final public function getData() {

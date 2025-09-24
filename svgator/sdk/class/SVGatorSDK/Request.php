@@ -31,10 +31,15 @@ class Request {
 	];
 
 	private function __construct() {
-		if ( in_array( @$_SERVER['HTTP_HOST'], [ 'wp.local', 'localhost:8081', 'wp.local:8081' ], true ) ) {
-            $domain = $_COOKIE['debug-plugin-backend'] ?? 'https://app.svgator.net';
-            $this->endpoint = $domain . '/api/app-auth/';
-		} elseif ( str_contains( @$_SERVER['HTTP_HOST'], '.svgator.net' ) ) {
+		$host = isset( $_SERVER['HTTP_HOST'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) : '';
+
+		if ( in_array( $host, [ 'wp.local', 'localhost:8081', 'wp.local:8081' ], true ) ) {
+			$domain = isset( $_COOKIE['debug-plugin-backend'] )
+				? esc_url_raw( wp_unslash( $_COOKIE['debug-plugin-backend'] ) )
+				: 'https://app.svgator.net';
+
+			$this->endpoint = $domain . '/api/app-auth/';
+		} elseif ( str_contains( $host, '.svgator.net' ) ) {
 			/*
 			 * this is because dev cannot access dev
 			 * app-svgator2 is the container's internal domain name for dev

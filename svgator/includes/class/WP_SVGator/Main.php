@@ -239,6 +239,9 @@ class Main {
 	 */
 	function saveToken(): void {
 		try {
+            if ( ! isset( $_POST['svgator_logIn_nonce'] ) ) {
+                throw new Exception( 'Missing SVGator login nonce.' );
+            }
 			$loginNonce = sanitize_text_field( wp_unslash( $_POST['svgator_logIn_nonce'] ) );
 			if ( ! wp_verify_nonce( $loginNonce, 'svgator_saveToken' ) ) {
 				throw new Exception( 'SVGator login nonce verification failed.' );
@@ -331,7 +334,15 @@ class Main {
 	 * @return void
 	 */
 	function svgatorLogOut(): void {
-		$nonce  = sanitize_text_field( wp_unslash( $_POST['svgator_logOut_nonce'] ) );
+        if ( ! isset( $_POST['svgator_logOut_nonce'] ) ) {
+            SDKResponse::send( [
+                    'success' => false,
+                    'error'   => 'Missing logout nonce.',
+            ] );
+            wp_die();
+        }
+
+        $nonce  = sanitize_text_field( wp_unslash( $_POST['svgator_logOut_nonce'] ) );
 		$option = get_user_option( self::SVGATOR_API_OPTION, get_current_user_id() );
 		if ( ! wp_verify_nonce( $nonce, 'svgator_logOut' ) || ! $option ) {
 			SDKResponse::send( [
@@ -390,10 +401,18 @@ class Main {
 		$userOptions = get_user_option( 'svgator_api', get_current_user_id() );
 
 		try {
+            if ( ! isset( $_POST['svgator_importProject_nonce'] ) ) {
+                throw new Exception( 'Missing SVGator project import nonce.' );
+            }
+
 			$importProjectNonce = sanitize_text_field( wp_unslash( $_POST['svgator_importProject_nonce'] ) );
 			if ( ! wp_verify_nonce( $importProjectNonce, 'svgator_importProject' ) ) {
 				throw new Exception( 'SVGator import project nonce verification failed.' );
 			}
+
+            if ( ! isset( $_POST['project_id'] ) ) {
+                throw new Exception( 'Missing SVGator project id.' );
+            }
 
 			$project_id = sanitize_key( $_POST['project_id'] );
 			$svgator    = new SDKMain( $userOptions );
