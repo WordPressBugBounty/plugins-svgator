@@ -4,9 +4,9 @@ Contributors: alucaci, dzsamper, lzudor, lgorbe, cursan
 Donate link: http://www.svgator.com/
 Tags: svg, vector image
 Requires at least: 5.0
-Requires PHP: 5.2
-Tested up to: 6.8
-Stable tag: 1.3.4
+Requires PHP: 7.0
+Tested up to: 6.9
+Stable tag: 1.3.5
 License: GPLv2
 
 The easiest way to add SVG animations to your website right from your SVGator account.
@@ -89,6 +89,9 @@ You can report any security bugs found in the source code of this plugin through
 1. SVGator's configuration page before logging in
 
 == Changelog ==
+= 1.3.5 =
+* Resolved issues shown up on [Plugin Check](https://github.com/WordPress/plugin-check/) WordPress plugin (version 1.7.0)
+* Functionality retested for version 6.9
 
 = 1.3.4 =
 * Resolved issues shown up on [Plugin Check](https://github.com/WordPress/plugin-check/) WordPress plugin (version 1.6.0)
@@ -164,7 +167,7 @@ You can report any security bugs found in the source code of this plugin through
 
 == Upgrade Notice ==
 
-For full functionality update to version 1.3.4
+For full functionality update to version 1.3.5
 
 == Disclosure ==
 

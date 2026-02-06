@@ -238,6 +238,7 @@ class WP_SVGator {
                 'dynamic',
                 false,
                 endpoint,
+                'wordpress',
             ).then(function(resp) {
                 if (!resp || !resp.auth_code || !resp.app_id) {
                     if (reject) {

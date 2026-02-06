@@ -1,15 +1,15 @@
 <?php
-
-$userTokens = get_user_option( 'svgator_api', get_current_user_id() );
-$cssClass   = empty( $userTokens )
-              || empty( $userTokens['app_id'] )
-              || empty( $userTokens['secret_key'] )
-              || empty( $userTokens['customer_id'] )
-              || empty( $userTokens['access_token'] ) ? 'logged-out' : 'logged-in';
+(function(){
+$svgator_userTokens = get_user_option( 'svgator_api', get_current_user_id() );
+$svgator_cssClass   = empty( $svgator_userTokens )
+              || empty( $svgator_userTokens['app_id'] )
+              || empty( $svgator_userTokens['secret_key'] )
+              || empty( $svgator_userTokens['customer_id'] )
+              || empty( $svgator_userTokens['access_token'] ) ? 'logged-out' : 'logged-in';
 ?>
     <div
             class="svgator-wrap wrap <?php
-			echo sanitize_html_class( $cssClass ) ?>"
+			echo sanitize_html_class( $svgator_cssClass ) ?>"
     >
         <div id="svgator-header">
             <h1>
@@ -38,3 +38,4 @@ $cssClass   = empty( $userTokens )
         </div>
     </div>
 <?php
+})();
