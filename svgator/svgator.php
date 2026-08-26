@@ -3,7 +3,9 @@
  * Plugin Name: SVGator
  * Plugin URI: https://www.svgator.com/help/getting-started/how-to-add-svg-to-wordpress
  * Description: Import your animated SVGs from SVGator.com
- * Version: 1.3.5
+ * Version: 1.4.0
+ * Requires at least: 5.9
+ * Requires PHP: 7.4
  * Author: SVGator
  * Author URI: https://www.svgator.com
  * Text Domain: svgator
@@ -36,7 +38,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-const WP_SVGATOR_VERSION = '1.3.5';
+const WP_SVGATOR_VERSION = '1.4.0';
 define( 'WP_SVGATOR_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WP_SVGATOR_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 

@@ -1,4 +1,10 @@
 <?php
+
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 (function(){
 $svgator_userTokens = get_user_option( 'svgator_api', get_current_user_id() );
 $svgator_cssClass   = empty( $svgator_userTokens )

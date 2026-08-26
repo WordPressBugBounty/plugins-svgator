@@ -2,6 +2,11 @@
 
 namespace WP_SVGator;
 
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
 require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
 

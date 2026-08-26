@@ -8,7 +8,7 @@ class ExportException extends Exception
 {
     protected $data;
 
-    public function __construct($message = null, $code = 0, Throwable $previous = null, $data = null) {
+    public function __construct($message = null, $code = 0, ?Throwable $previous = null, $data = null) {
         $this->data = $data;
         parent::__construct($message, $code, $previous);
     }

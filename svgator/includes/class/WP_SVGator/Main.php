@@ -2,6 +2,11 @@
 
 namespace WP_SVGator;
 
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
 require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
 
@@ -252,6 +257,13 @@ class Main {
 			}
 
 			$userOptions = get_user_option( self::SVGATOR_API_OPTION );
+
+			// get_user_option() returns false when the option is not set yet,
+			// e.g. on the very first login. Writing keys straight into that
+			// false is deprecated as of PHP 8.1 and fatal as of PHP 9.
+			if ( ! is_array( $userOptions ) ) {
+				$userOptions = [];
+			}
 
 			if ( self::FORCE_DEV ) {
 				$userOptions['endpoint'] = Main::FORCE_DEV . '/';

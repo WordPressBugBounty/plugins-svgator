@@ -4,6 +4,12 @@
  *
  * https://www.svgator.com/
  */
+
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 spl_autoload_register('SVGatorSDK_autoloader');
 
 function SVGatorSDK_autoloader($className) {
